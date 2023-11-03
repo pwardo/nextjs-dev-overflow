@@ -3,8 +3,9 @@ import LocalSearch from "@/app/components/shared/search/LocalSearch";
 import Filter from "@/app/components/shared/Filter";
 import HomeFilters from "@/app/components/home/HomeFilters";
 import { HomePageFilters } from "@/constants/filters";
-
 import Link from "next/link";
+import NoResult from "@/app/components/shared/NoResult";
+
 
 const Home = () => {
   return (
@@ -33,6 +34,18 @@ const Home = () => {
         />
       </div>
       <HomeFilters />
+      <div className="mt-10 flex w-full flex-col gap-6">
+        {[].length > 0 ? (
+          [mockQuestions].map((question) => "QuestionCard")
+        ) : (
+          <NoResult
+            title="There are no questions to show"
+            description="Be the first to break the silence! 🚀 Ask a Question and kickstart the discussion. our query could be the next big thing others learn from. Get involved! 💡"
+            link="/ask-question"
+            linkTitle="Ask a Question"
+          />
+        )}
+      </div>
     </>
   );
 };
